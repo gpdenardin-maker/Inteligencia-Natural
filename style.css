@@ -1,51 +1,78 @@
 body {
   margin: 0;
-  background: #343541;
-  font-family: Arial;
-  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f7f7f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.wrapper {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-}
-
-.logo {
-  color: #10a37f;
-  margin-bottom: 20px;
-}
-
-.chat-area {
-  margin-bottom: 20px;
-}
-
-.message {
-  background: #444654;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.form input {
+.container {
   width: 100%;
-  padding: 12px;
-  margin: 5px 0;
-  border-radius: 8px;
-  border: none;
+  max-width: 600px;
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.sub {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #10a37f;
+}
+
+.checkbox {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  margin: 16px 0;
 }
 
 button {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
   background: #10a37f;
-  border: none;
   color: white;
-  border-radius: 8px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.lgpd {
-  font-size: 12px;
-  margin-top: 10px;
+button:hover {
+  background: #0e8e6d;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
 }
