@@ -1,19 +1,22 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* mais camadas = mais “rede” */
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(0,255,170,0.25) 2px, transparent 3px),
+    radial-gradient(circle at 35% 40%, rgba(0,140,255,0.20) 2px, transparent 3px),
+    radial-gradient(circle at 60% 30%, rgba(140,0,255,0.18) 2px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(0,255,170,0.18) 2px, transparent 3px),
+    radial-gradient(circle at 25% 80%, rgba(0,140,255,0.15) 2px, transparent 3px),
+    radial-gradient(circle at 70% 55%, rgba(140,0,255,0.15) 2px, transparent 3px);
 
-  background: radial-gradient(circle at top left, #0b1220, #05070f);
-  color: white;
+  background-size: 140px 140px;
 
-  overflow: hidden;
+  opacity: 0.9;
 
-  /* 🔥 IMPORTANTE: necessário para o ::before funcionar corretamente */
-  position: relative;
+  pointer-events: none;
 }
 
 /* 🌐 fundo em rede */
