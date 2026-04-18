@@ -21,7 +21,7 @@ async function enviarDados() {
     return;
   }
 
-  const { error } = await supabase
+  const { error } = await client
     .from("membros")
     .insert([
       {
@@ -36,22 +36,16 @@ async function enviarDados() {
     return;
   }
 
-  // 👉 abre WhatsApp
-  const numero = "5551999999999";
+  // 👉 abre grupo direto
+  const linkGrupo = "https://chat.whatsapp.com/SEU-LINK-REAL";
 
-  const mensagem = encodeURIComponent(
-    `Olá! Quero entrar no Fórum.\n\nNome: ${nome}\nÁrea: ${area}\nInteresse: ${interesse}`
-  );
-
-  const linkGrupo = "https://chat.whatsapp.com/SEU-LINK";
-
-window.open(linkGrupo, "_blank");
+  window.open(linkGrupo, "_blank");
 }
 
 
 // 👉 TOTAL
 async function carregarTotal() {
-  const { data } = await supabase
+  const { data } = await client
     .from("membros")
     .select("*");
 
@@ -61,7 +55,7 @@ async function carregarTotal() {
 
 // 👉 INTERESSES
 async function carregarInteresses() {
-  const { data } = await supabase
+  const { data } = await client
     .from("membros")
     .select("area_interesse");
 
