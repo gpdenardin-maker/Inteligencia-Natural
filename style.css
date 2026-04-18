@@ -14,22 +14,6 @@ body::before {
   pointer-events: none;
 }
 
-/* 🌐 fundo em rede */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(0,255,170,0.12) 2px, transparent 2px),
-    radial-gradient(circle at 70% 60%, rgba(0,140,255,0.10) 2px, transparent 2px),
-    radial-gradient(circle at 40% 80%, rgba(140,0,255,0.08) 2px, transparent 2px);
-
-  background-size: 180px 180px;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
 /* conteúdo central */
 .wrapper {
   width: 100%;
