@@ -37,7 +37,7 @@ async function enviarDados() {
   }
 
   // 👉 abre grupo direto
-  const linkGrupo = "https://chat.whatsapp.com/SEU-LINK-REAL";
+  const linkGrupo = "https://chat.whatsapp.com/Fwqatlvqy5kJDYYXlEbitq";
 
   window.open(linkGrupo, "_blank");
 }
