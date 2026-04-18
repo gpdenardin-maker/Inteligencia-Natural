@@ -1,4 +1,4 @@
-const supabase = supabase.createClient(
+const client = supabase.createClient(
   "https://gbnkhgeuvsgmkgymskzz.supabase.co",
   "sb_publishable_WvjRolb7u5JiK3EcfrzABg_CaCo3O5X"
 );
@@ -43,7 +43,9 @@ async function enviarDados() {
     `Olá! Quero entrar no Fórum.\n\nNome: ${nome}\nÁrea: ${area}\nInteresse: ${interesse}`
   );
 
-  window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+  const linkGrupo = "https://chat.whatsapp.com/SEU-LINK";
+
+window.open(linkGrupo, "_blank");
 }
 
 
