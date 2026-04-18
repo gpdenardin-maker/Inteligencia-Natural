@@ -1,45 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Inteligência Natural</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
+
 <body>
 
-<div class="wrapper">
+<div class="container">
 
-  <div class="logo">Inteligência Natural</div>
+  <h1>Inicie sua conversa</h1>
+  <p class="sub">
+    Inteligência Natural — conexões humanas sobre projetos
+  </p>
 
-  <div class="chat-area">
-    <div class="message bot">
-      <p>Bem-vindo 👋</p>
-      <p>
-        Para entrar no fórum, se apresente:
-        <br><br>
-        • Nome<br>
-        • Área de atuação<br>
-        • Tema de interesse
-      </p>
-    </div>
+  <div class="input-group">
+    <input id="nome" placeholder="Seu nome">
   </div>
 
-  <div class="form">
-    <input id="nome" placeholder="Nome">
+  <div class="input-group">
     <input id="area" placeholder="Área de atuação">
-    <input id="interesse" placeholder="Tema de interesse">
+  </div>
 
-    <label class="lgpd">
-      <input type="checkbox" id="lgpd">
-      Concordo com uso dos meus dados para o fórum
-    </label>
+  <div class="input-group">
+    <input id="interesse" placeholder="Sobre o que quer conversar?">
+  </div>
 
-    <button onclick="enviarDados()">Entrar no grupo ➤</button>
+  <div class="checkbox">
+    <input type="checkbox" id="lgpd">
+    <label>Aceito o uso dos dados para organização do fórum</label>
+  </div>
+
+  <button onclick="enviarDados()">Iniciar conversa →</button>
+
+  <div class="footer">
+    Fórum de Gestão de Projetos
   </div>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
