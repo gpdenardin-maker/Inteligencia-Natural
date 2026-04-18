@@ -2,48 +2,58 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Inteligência Natural</title>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- 🔥 CSS (garante carregamento correto) -->
+  <link rel="stylesheet" href="./style.css">
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <h1>Inicie sua conversa</h1>
-  <p class="sub">
-    Inteligência Natural — conexões humanas sobre projetos
-  </p>
+    <h1>Inicie sua conversa</h1>
 
-  <div class="input-group">
-    <input id="nome" placeholder="Seu nome">
+    <p class="sub">
+      Inteligência Natural — conexões humanas sobre projetos
+    </p>
+
+    <div class="input-group">
+      <input id="nome" placeholder="Seu nome">
+    </div>
+
+    <div class="input-group">
+      <input id="area" placeholder="Área de atuação">
+    </div>
+
+    <div class="input-group">
+      <input id="interesse" placeholder="Sobre o que quer conversar?">
+    </div>
+
+    <div class="checkbox">
+      <input type="checkbox" id="lgpd">
+      <label for="lgpd">
+        Aceito o uso dos dados para organização do fórum
+      </label>
+    </div>
+
+    <button onclick="enviarDados()">
+      Iniciar conversa →
+    </button>
+
+    <div class="footer">
+      Fórum de Gestão de Projetos
+    </div>
+
   </div>
 
-  <div class="input-group">
-    <input id="area" placeholder="Área de atuação">
-  </div>
-
-  <div class="input-group">
-    <input id="interesse" placeholder="Sobre o que quer conversar?">
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" id="lgpd">
-    <label>Aceito o uso dos dados para organização do fórum</label>
-  </div>
-
-  <button onclick="enviarDados()">Iniciar conversa →</button>
-
-  <div class="footer">
-    Fórum de Gestão de Projetos
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <!-- 🔥 JS (tem que existir ou pode dar erro silencioso) -->
+  <script src="./script.js"></script>
 
 </body>
 </html>
