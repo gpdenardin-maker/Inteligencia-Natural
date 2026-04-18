@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Inteligência Natural</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="logo">Inteligência Natural</div>
+
+  <div class="chat-area">
+    <div class="message bot">
+      <p>Bem-vindo 👋</p>
+      <p>
+        Para entrar no fórum, se apresente:
+        <br><br>
+        • Nome<br>
+        • Área de atuação<br>
+        • Tema de interesse
+      </p>
+    </div>
+  </div>
+
+  <div class="form">
+    <input id="nome" placeholder="Nome">
+    <input id="area" placeholder="Área de atuação">
+    <input id="interesse" placeholder="Tema de interesse">
+
+    <label class="lgpd">
+      <input type="checkbox" id="lgpd">
+      Concordo com uso dos meus dados para o fórum
+    </label>
+
+    <button onclick="enviarDados()">Entrar no grupo ➤</button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="script.js"></script>
+</body>
+</html>

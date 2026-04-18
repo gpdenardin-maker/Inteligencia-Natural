@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background: #343541;
+  font-family: Arial;
+  color: white;
+}
+
+.wrapper {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.logo {
+  color: #10a37f;
+  margin-bottom: 20px;
+}
+
+.chat-area {
+  margin-bottom: 20px;
+}
+
+.message {
+  background: #444654;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #10a37f;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lgpd {
+  font-size: 12px;
+  margin-top: 10px;
+}
