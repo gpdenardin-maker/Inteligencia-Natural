@@ -74,4 +74,8 @@ button:hover {
   margin-top: 25px;
   font-size: 0.8rem;
   color: #999;
+  
+}
+input::placeholder {
+  color: #aaa;
 }
