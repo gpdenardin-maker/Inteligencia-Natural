@@ -56,15 +56,18 @@ async function carregarTotal() {
 // 👉 INTERESSES
 async function carregarInteresses() {
   const { data } = await client
-    .from("membros")
-    .select("area_interesse");
+    .from("resumo_interesses")
+    .select("*");
 
-  const contagem = {};
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
 
   data.forEach(item => {
-    contagem[item.area_interesse] =
-      (contagem[item.area_interesse] || 0) + 1;
+    const li = document.createElement("li");
+    li.innerText = `${item.area_interesse} (${item.total})`;
+    lista.appendChild(li);
   });
+}
 
   const lista = document.getElementById("lista");
 
