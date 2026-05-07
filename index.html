@@ -778,7 +778,7 @@ function renderCharts(data, hasFilter) {
 
   const sortInt = Object.entries(cInt).sort((a,b)=>b[1]-a[1]);
   const maxInt  = sortInt[0]?.[1] || 1;
-  const sortOri = Object.entries(cOri).sort((a,b)=>b[1]-a[1]).slice(0,18);
+  const sortOri = Object.entries(cOri).sort((a,b)=>b[1]-a[1]).slice(0,10);
   const tf = { family:"'DM Sans',sans-serif", size:11 };
 
   const af = (campo) => hasFilter && activeFilter?.campo === campo ? " active" : "";
@@ -810,8 +810,8 @@ function renderCharts(data, hasFilter) {
 
     <div class="chart-box wide${af('pais_estado')}">
       <div class="ct-title">Origem — País / Estado</div>
-      <div class="ct-hint">Top 18 origens · clique para filtrar</div>
-      <div class="ct-tall"><canvas id="ch-ori"></canvas></div>
+      <div class="ct-hint">Top 10 origens · clique para filtrar</div>
+      <div id="ori-wrap"><canvas id="ch-ori"></canvas></div>
     </div>
   `;
 
@@ -866,7 +866,11 @@ function renderCharts(data, hasFilter) {
 
   // ORIGEM
   const oL=sortOri.map(([k])=>k), oV=sortOri.map(([,v])=>v);
-  if (oL.length) myCharts.ori = new Chart(document.getElementById("ch-ori"),{
+  if (oL.length) {
+    const oriWrap = document.getElementById("ori-wrap");
+    oriWrap.style.position = "relative";
+    oriWrap.style.height = Math.max(200, oL.length * 36) + "px";
+    myCharts.ori = new Chart(document.getElementById("ch-ori"),{
     type:"bar",
     data:{labels:oL,datasets:[{data:oV,backgroundColor:PAL.slice(0,oL.length),borderRadius:7,borderSkipped:false}]},
     options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
@@ -874,7 +878,7 @@ function renderCharts(data, hasFilter) {
       scales:{x:{ticks:{font:tf}},y:{ticks:{font:tf}}},
       onClick:(e,el)=>{if(el[0]) applyFilter("pais_estado",oL[el[0].index]);}}
   });
-}
+  }
 
 // ─── INIT ─────────────────────────────────────
 buildCats();
