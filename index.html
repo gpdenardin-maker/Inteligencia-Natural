@@ -96,6 +96,38 @@
       margin-right: 4px;
     }
 
+
+    /* Toggle de interesses */
+    .interesse-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--wire2);
+      border-radius: var(--r-sm);
+      cursor: pointer; transition: all 0.2s;
+      user-select: none;
+    }
+    .interesse-toggle:hover { border-color: var(--jade); background: rgba(0,212,160,0.04); }
+    .interesse-toggle.aberto { border-color: var(--jade); background: rgba(0,212,160,0.04); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .interesse-toggle-left { display: flex; align-items: center; gap: 10px; }
+    .interesse-toggle-icon { color: var(--jade); font-size: 1.1rem; line-height: 1; }
+    .interesse-toggle-label { font-size: 0.9rem; color: var(--paper); }
+    .interesse-toggle-right { display: flex; align-items: center; gap: 10px; }
+    .interesse-arrow { color: var(--ghost); font-size: 0.9rem; transition: transform 0.25s; }
+    .interesse-arrow.up { transform: rotate(180deg); }
+
+    .interesse-painel {
+      display: none;
+      padding: 0 16px 14px;
+      background: rgba(0,212,160,0.02);
+      border: 1px solid var(--jade);
+      border-top: none;
+      border-bottom-left-radius: var(--r-sm);
+      border-bottom-right-radius: var(--r-sm);
+      animation: fadeSlide 0.18s ease;
+    }
+    .interesse-painel.aberto { display: block; }
+
     /* Form sem card */
     .form-inner {
       width: 100%; max-width: 560px;
@@ -519,19 +551,29 @@
 
     <!-- INTERESSES -->
     <div class="fld">
-      <div class="fld-lbl">
-        Área(s) de interesse
-        <span class="blim" id="blim">0 / 3</span>
+      <div class="interesse-toggle" id="interesse-toggle" onclick="toggleInteresses()">
+        <div class="interesse-toggle-left">
+          <span class="interesse-toggle-icon">⊕</span>
+          <span class="interesse-toggle-label">Áreas de interesse</span>
+        </div>
+        <div class="interesse-toggle-right">
+          <span class="blim" id="blim">0 / 3</span>
+          <span class="interesse-arrow" id="interesse-arrow">▾</span>
+        </div>
       </div>
-      <div class="fld-hint">Escolha até 3 áreas. Clique na categoria e depois na subárea.</div>
-      <div class="cats" id="cats"></div>
-      <div class="subs-panel" id="subs-panel">
-        <div class="subs" id="subs"></div>
+
+      <div class="interesse-painel" id="interesse-painel">
+        <div class="fld-hint" style="margin-top:12px">Escolha até 3 áreas. Clique na categoria e depois na subárea.</div>
+        <div class="cats" id="cats"></div>
+        <div class="subs-panel" id="subs-panel">
+          <div class="subs" id="subs"></div>
+        </div>
+        <div class="outro-panel" id="outro-panel">
+          <input class="inp" id="outro-inp" placeholder="Descreva sua área de interesse...">
+          <button class="btn-add-outro" onclick="addOutro()">+ Adicionar</button>
+        </div>
       </div>
-      <div class="outro-panel" id="outro-panel">
-        <input class="inp" id="outro-inp" placeholder="Descreva sua área de interesse...">
-        <button class="btn-add-outro" onclick="addOutro()">+ Adicionar</button>
-      </div>
+
       <div class="tags" id="tags"></div>
     </div>
 
@@ -661,6 +703,18 @@ const CATS = {
 };
 
 let catAtual = null, selecionados = [];
+
+function toggleInteresses() {
+  const painel = document.getElementById("interesse-painel");
+  const toggle = document.getElementById("interesse-toggle");
+  const arrow  = document.getElementById("interesse-arrow");
+  const aberto = painel.classList.contains("aberto");
+  painel.classList.toggle("aberto", !aberto);
+  toggle.classList.toggle("aberto", !aberto);
+  arrow.classList.toggle("up", !aberto);
+  // Mudar ícone
+  toggle.querySelector(".interesse-toggle-icon").textContent = aberto ? "⊕" : "⊖";
+}
 
 function buildCats() {
   const el = document.getElementById("cats");
