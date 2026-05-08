@@ -96,6 +96,47 @@
       margin-right: 4px;
     }
 
+    /* Form sem card */
+    .form-inner {
+      width: 100%; max-width: 560px;
+      position: relative;
+    }
+
+    /* Inteligência Natural brilhante abaixo do botão */
+    .in-glow {
+      margin-top: 22px; text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--jade);
+      animation: glow-pulse 2.8s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0%,100% { opacity: 0.3; text-shadow: 0 0 6px var(--jade); }
+      50%      { opacity: 1;   text-shadow: 0 0 18px var(--jade), 0 0 32px var(--jade); }
+    }
+
+    /* Scroll CTA mais visível */
+    .scroll-cta {
+      margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--ghost); font-size: 0.82rem; cursor: pointer; transition: color 0.2s;
+      font-family: 'Fira Code', monospace; letter-spacing: 0.06em;
+      user-select: none;
+    }
+    .scroll-cta:hover { color: var(--jade); }
+    .arrow-ring {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(0,212,160,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--jade);
+      animation: bob 2.2s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(0,212,160,0.15);
+    }
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+
     /* Logo */
     .logo-strip {
       display: flex; align-items: center; gap: 10px;
@@ -117,25 +158,10 @@
       font-size: 1rem; letter-spacing: 0.04em; color: var(--ghost);
     }
 
-    /* Card principal */
-    .card {
-      width: 100%; max-width: 560px;
-      background: rgba(14,16,24,0.75);
-      border: 1px solid var(--wire2);
-      border-radius: 26px;
-      padding: 46px 42px;
-      backdrop-filter: blur(18px);
-      position: relative; overflow: hidden;
-      animation: card-in 0.7s cubic-bezier(0.22,1,0.36,1) both;
-    }
+    /* Animação entrada */
     @keyframes card-in {
       from { opacity:0; transform: translateY(24px); }
       to   { opacity:1; transform: translateY(0); }
-    }
-    .card::before {
-      content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
-      background: linear-gradient(90deg, transparent, var(--jade), var(--cobalt), transparent);
-      opacity: 0.6;
     }
 
     h1 {
@@ -310,13 +336,14 @@
     .div-line {
       flex: 1; height: 1px;
       background: linear-gradient(90deg, transparent, var(--jade), var(--cobalt), transparent);
-      opacity: 0.25;
+      opacity: 0.5;
     }
     .div-label {
       padding: 0 28px;
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Fira Code', monospace;
       font-size: 0.75rem; letter-spacing: 0.14em;
-      color: var(--ghost2); text-transform: uppercase; white-space: nowrap;
+      color: var(--jade); text-transform: uppercase; white-space: nowrap;
+      opacity: 0.7;
     }
 
     /* ══════════════════════════════════════════
@@ -333,10 +360,10 @@
       max-width: 1120px; margin: 0 auto 36px;
     }
     .dash-h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem; line-height: 1.2;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.5rem; line-height: 1.2; font-weight: 600;
     }
-    .dash-h2 em { font-style: italic; color: var(--cobalt); }
+    .dash-h2 em { font-style: normal; color: var(--jade); }
     .dash-sub { font-size: 0.8rem; color: var(--ghost); margin-top: 4px; }
 
     .dash-ctrl { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -372,8 +399,8 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .met-card:hover { border-color: var(--wire2); transform: translateY(-2px); }
-    .met-lbl { font-size: 0.68rem; color: var(--ghost); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .met-val { font-family: 'DM Serif Display', serif; font-size: 2.3rem; line-height: 1; }
+    .met-lbl { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--ghost); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .met-val { font-family: 'Fira Code', monospace; font-size: 2rem; line-height: 1; font-weight: 600; }
     .met-val.j { color: var(--jade); }
     .met-val.c { color: #7fb3ff; }
     .met-note { font-size: 0.7rem; color: var(--ghost2); margin-top: 4px; }
@@ -393,7 +420,7 @@
     .chart-box:hover { border-color: var(--wire2); }
     .chart-box.active { border-color: var(--jade); box-shadow: 0 0 0 1px var(--jade-glow); }
     .chart-box.wide { grid-column: 1 / -1; }
-    .ct-title { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 3px; }
+    .ct-title { font-family: 'Fira Code', monospace; font-size: 0.88rem; margin-bottom: 3px; font-weight: 600; letter-spacing: 0.04em; }
     .ct-hint { font-size: 0.71rem; color: var(--ghost2); margin-bottom: 16px; }
     .ct-wrap { position: relative; height: 220px; }
     .ct-tall  { position: relative; height: 320px; }
@@ -435,9 +462,9 @@
     .footer-pg a:hover { color: var(--jade); }
 
     @media (max-width: 520px) {
-      .card { padding: 30px 20px; }
+      .form-inner { padding: 0 4px; }
       h1 { font-size: 1.8rem; }
-      .met-val { font-size: 1.8rem; }
+      .met-val { font-size: 1.5rem; }
       #s2 { padding: 48px 14px 60px; }
     }
   </style>
@@ -456,18 +483,13 @@
 <!-- ═══════════════════════════════════════════ -->
 <section id="s1">
 
-  <div class="logo-strip">
-    <div class="gem"></div>
-    <span class="logo-name">Inteligência Natural</span>
-  </div>
-
   <div class="forum-title">
     <div class="forum-title-line"></div>
     <h2 class="forum-title-text"><span class="slash">//</span> Fórum de Gestão de Projetos</h2>
     <div class="forum-title-line"></div>
   </div>
 
-  <div class="card">
+  <div class="form-inner">
     <h1>Inicie sua <em>conversa</em></h1>
     <p class="tagline">Conexões humanas sobre projetos — nos conte um pouco sobre você.</p>
 
@@ -538,9 +560,7 @@
       Iniciar conversa →
     </button>
 
-    <div style="margin-top:18px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.15);">
-      Fórum de Gestão de Projetos
-    </div>
+    <div class="in-glow">Inteligência Natural</div>
   </div>
 
   <div class="scroll-cta" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})">
@@ -871,68 +891,4 @@ function renderCharts(data, hasFilter) {
     tbl.innerHTML = `<thead><tr><th>Área</th><th style="text-align:right">Total</th></tr></thead><tbody>
       ${sortInt.map(([k,v]) => `
         <tr onclick="applyFilter('interesse','${k.replace(/'/g,"\\'")}')">
-          <td>${k}<div class="bar-mini" style="width:${Math.round(v/maxInt*100)}%"></div></td>
-          <td style="text-align:right;font-weight:500;color:var(--jade)">${v}</td>
-        </tr>`).join("")}
-    </tbody>`;
-  }
-
-  Chart.defaults.color = "rgba(255,255,255,0.32)";
-  Chart.defaults.borderColor = "rgba(255,255,255,0.05)";
-
-  // ESCOLARIDADE
-  const eK=Object.keys(cEsc), eV=Object.values(cEsc);
-  if (eK.length) myCharts.esc = new Chart(document.getElementById("ch-esc"),{
-    type:"bar",
-    data:{labels:eK,datasets:[{data:eV,backgroundColor:PAL.slice(0,eK.length),borderRadius:7,borderSkipped:false}]},
-    options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} pessoas`}}},
-      scales:{x:{ticks:{font:tf}},y:{ticks:{font:tf}}},
-      onClick:(e,el)=>{if(el[0]) applyFilter("escolaridade",eK[el[0].index]);}}
-  });
-
-  // FAIXA ETÁRIA
-  myCharts.fx = new Chart(document.getElementById("ch-fx"),{
-    type:"bar",
-    data:{labels:Object.keys(fx),datasets:[{data:Object.values(fx),backgroundColor:PAL.slice(2,7),borderRadius:7,borderSkipped:false}]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} pessoas`}}},
-      scales:{x:{ticks:{font:tf}},y:{ticks:{font:tf}}}}
-  });
-
-  // PMP
-  myCharts.pmp = new Chart(document.getElementById("ch-pmp"),{
-    type:"doughnut",
-    data:{labels:["Com PMP","Sem PMP"],datasets:[{data:[comPmp,semPmp],backgroundColor:["#00d4a0","rgba(255,255,255,0.07)"],borderWidth:0,hoverOffset:10}]},
-    options:{responsive:true,maintainAspectRatio:false,cutout:"72%",
-      plugins:{
-        legend:{position:"bottom",labels:{font:tf,padding:20,color:"rgba(255,255,255,0.38)"}},
-        tooltip:{callbacks:{label:c=>` ${c.raw} pessoas (${(comPmp+semPmp)>0?Math.round(c.raw/(comPmp+semPmp)*100):0}%)`}}
-      },
-      onClick:(e,el)=>{if(el[0]) applyFilter("tem_pmp",el[0].index===0);}}
-  });
-
-  // ORIGEM
-  const oL=sortOri.map(([k])=>k), oV=sortOri.map(([,v])=>v);
-  if (oL.length) {
-    const oriWrap = document.getElementById("ori-wrap");
-    oriWrap.style.position = "relative";
-    oriWrap.style.height = Math.max(200, oL.length * 36) + "px";
-    myCharts.ori = new Chart(document.getElementById("ch-ori"),{
-    type:"bar",
-    data:{labels:oL,datasets:[{data:oV,backgroundColor:PAL.slice(0,oL.length),borderRadius:7,borderSkipped:false}]},
-    options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} pessoas`}}},
-      scales:{x:{ticks:{font:tf}},y:{ticks:{font:tf}}},
-      onClick:(e,el)=>{if(el[0]) applyFilter("pais_estado",oL[el[0].index]);}}
-  });
-  }
-}
-
-// ─── INIT ─────────────────────────────────────
-buildCats();
-loadAll();
-
-</script>
-</body>
-</html>
+          <td>${k}<d
