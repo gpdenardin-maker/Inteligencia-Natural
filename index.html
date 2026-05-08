@@ -526,6 +526,12 @@
       <label for="lgpd">Aceito o uso dos dados para organização do fórum — sem identificação pessoal</label>
     </div>
 
+    <!-- HONEYPOT: invisível para humanos, bots preenchem -->
+    <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+      <input type="text" id="hp_name" name="name" tabindex="-1" autocomplete="off">
+      <input type="email" id="hp_email" name="email" tabindex="-1" autocomplete="off">
+    </div>
+
     <div class="erro" id="erro"></div>
 
     <button class="btn-main" id="btn-env" onclick="enviar()">
@@ -678,10 +684,21 @@ function renderTags() {
 
 // ─── ENVIO ───────────────────────────────────
 let sends = parseInt(sessionStorage.getItem("sends") || "0");
+const FORM_START = Date.now(); // token de tempo — registra quando a página abriu
 
 async function enviar() {
   clearErr();
   if (sends >= 1) { showErr("Você já participou nesta sessão. Obrigado!"); return; }
+
+  // HONEYPOT: se algum campo invisível foi preenchido, é bot
+  if (document.getElementById("hp_name").value || document.getElementById("hp_email").value) {
+    return; // rejeita silenciosamente
+  }
+
+  // TOKEN DE TEMPO: formulário preenchido em menos de 3 segundos = bot
+  if (Date.now() - FORM_START < 3000) {
+    return; // rejeita silenciosamente
+  }
   if (!selecionados.length) { showErr("Selecione ao menos uma área de interesse."); return; }
   const ano = document.getElementById("ano").value;
   if (ano && (parseInt(ano) < 1940 || parseInt(ano) > 2010)) { showErr("Ano de nascimento inválido."); return; }
