@@ -690,13 +690,14 @@ async function enviar() {
   const btn = document.getElementById("btn-env");
   btn.disabled = true; btn.textContent = "Enviando...";
 
-  const origem = document.getElementById("origem").value.replace(/<[^>]*>/g,"").substring(0,100);
+  const origemRaw = document.getElementById("origem").value.replace(/<[^>]*>/g,"").substring(0,100);
+  const origem = origemRaw.trim().toUpperCase().replace(/\s+/g," ").replace(/\s*[\/\-]\s*/g," / ") || null;
 
   const { error } = await SB.from("membros").insert([{
     interesses:     selecionados,
     ano_nascimento: ano ? parseInt(ano) : null,
     escolaridade:   document.getElementById("esc").value || null,
-    pais_estado:    origem || null,
+    pais_estado:    origem,
     tem_pmp:        document.getElementById("pmp").checked
   }]);
 
